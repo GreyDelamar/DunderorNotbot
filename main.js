@@ -1,42 +1,23 @@
 require('dotenv').config();
-var champList = require('./champs');
-var  Discordie = require('discordie');
+var dunderornot = require('./champ-picker');
+const Discord = require('discord.js');
+const client = new Discord.Client();
 
-const Events = Discordie.Events;
-const client = new Discordie();
 
-client.connect({
-  token: process.env.TOKEN
+client.login(process.env.TOKEN);
+
+client.on('ready', () => {
+  console.log('Getting ready to DUNDER!');
 });
 
-
-
-function champpick (){
-    var i = number();
-    return champList[i]
-};
-function number () {
-  return Math.floor(Math.random()*100);
-};
-function  dunderornot (){
-  if(number()>=50){
-    // console.log(champpick());
-    // console.log(champpick());
-    return "DUNDER ====== "+ champpick()+ " + " + champpick()
-  }else{
-    return "DON'T DUNDER ====== be normal"
-  }
-};
-
-
-client.Dispatcher.on(Events.GATEWAY_READY, e => {
-  console.log('sup dog');
-});
-
-client.Dispatcher.on(Events.MESSAGE_CREATE, e =>{
-  if (e.message.content == 'DO WE DUNDER?'){
-    e.message.channel.sendMessage(dunderornot());
-  }else if (e.message.content == 'do we dunder?'){
-    e.message.channel.sendMessage(dunderornot());
+client.on('message', message => {
+  if (message.content == 'DO WE DUNDER?') {
+    message.reply(dunderornot());
+  }else if (message.content == 'do we dunder?') {
+    message.reply(dunderornot());
+  }else if (message.content == 'DOWEDUNDER?') {
+    message.reply(dunderornot());
+  }else if (message.content == 'dowedunder?') {
+    message.reply(dunderornot());
   }
 });
