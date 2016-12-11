@@ -1,0 +1,14 @@
+{
+  "name": "dunderornot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon main.js"
+  },
+  "dependencies": {
+    "discord.js": "^10.0.1",
+    "discordie": "^0.10.0",
+    "dotenv": "^2.0.0"
+  }
+}
